@@ -21,6 +21,7 @@ RUN apt-get update && \
     conda clean -tipsy && \
     echo "PATH=/opt/miniconda3/bin:\${PATH}" > /etc/profile.d/miniconda.sh && \
     pip install --no-cache pyspark==${SPARK_VERSION} && \
+    pip install --no-cache s3-concat==0.1.2 && \
     SPARK_HOME=$(python /opt/miniconda3/bin/find_spark_home.py) && \
     echo "export SPARK_HOME=$(python /opt/miniconda3/bin/find_spark_home.py)" > /etc/profile.d/spark.sh && \
     curl -s --url "http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar" --output $SPARK_HOME/jars/aws-java-sdk-1.7.4.jar && \
